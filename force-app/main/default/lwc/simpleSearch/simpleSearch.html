@@ -1,0 +1,26 @@
+<template>
+    <div>
+        <lightning-input
+            type="text"
+            label="Search Accounts"
+            onchange={handleInputChange}
+        ></lightning-input>
+        <lightning-button
+            label="Search"
+            onclick={handleSearch}
+            variant="brand"
+        ></lightning-button>
+    </div>
+
+    <template if:true={error}>
+        <p class="error">{error}</p>
+    </template>
+
+    <template if:true={accounts}>
+        <ul>
+            <template for:each={accounts} for:item="account">
+                <li key={account.Id}>{account.Name}</li>
+            </template>
+        </ul>
+    </template>
+</template>
